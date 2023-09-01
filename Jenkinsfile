@@ -1,25 +1,15 @@
 pipeline {
-  agent any
-  stages {
-    stage('Fluffy Build') {
-      steps {
-        echo 'Placeholder'
-        sh 'echo Edited Placeholder.'
-      }
+    agent {
+        docker {
+            image 'maven:3.9.4-eclipse-temurin-17-alpine' 
+            args '-v /root/.m2:/root/.m2' 
+        }
     }
-
-    stage('Fluffy Test') {
-      steps {
-        sh 'sleep 5'
-        sh 'echo Success!'
-      }
+    stages {
+        stage('Build') { 
+            steps {
+                sh 'mvn -B -DskipTests clean package' 
+            }
+        }
     }
-
-    stage('Fluffy Deploy') {
-      steps {
-        echo 'Placeholder'
-      }
-    }
-
-  }
 }
