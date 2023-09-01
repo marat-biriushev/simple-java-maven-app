@@ -3,8 +3,13 @@ pipeline {
   stages {
     stage('Fluffy Build') {
       steps {
-        echo 'Placeholder'
-        sh 'echo Edited Placeholder.'
+        sh './jenkins/build.sh,'
+      }
+    }
+
+    stage('Buzz Test') {
+      steps {
+        sh './jenkins/test-all.sh'
       }
     }
 
