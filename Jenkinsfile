@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Fluffy Build') {
       steps {
-        sh './jenkins/build.sh'
+        sh 'bash ./jenkins/build.sh'
       }
     }
 
